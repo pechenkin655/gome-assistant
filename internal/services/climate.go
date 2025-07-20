@@ -30,3 +30,11 @@ func (c Climate) SetTemperature(entityId string, serviceData types.SetTemperatur
 
 	return c.conn.WriteMessage(req)
 }
+
+func (c Climate) TurnOff(entityId string) error {
+	req := NewBaseServiceRequest(entityId)
+	req.Domain = "climate"
+	req.Service = "turn_off"
+
+	return c.conn.WriteMessage(req)
+}
