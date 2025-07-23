@@ -27,3 +27,22 @@ type EventZWaveJSValueNotification struct {
 		TimeFired time.Time `json:"time_fired"`
 	} `json:"event"`
 }
+
+type EventTimerEvent struct {
+	ID    int    `json:"id"`
+	Type  string `json:"type"`
+	Event struct {
+		EventType string `json:"event_type"`
+		Data      struct {
+			EntityID   string    `json:"entity_id"`
+			FinishedAt time.Time `json:"finished_at"`
+		} `json:"data"`
+		Origin    string `json:"origin"`
+		TimeFired time.Time `json:"time_fired"`
+		Context   struct {
+			ID       string  `json:"id"`
+			ParentID *string `json:"parent_id"` // nullable
+			UserID   *string `json:"user_id"`   // nullable
+		} `json:"context"`
+	} `json:"event"`
+}
